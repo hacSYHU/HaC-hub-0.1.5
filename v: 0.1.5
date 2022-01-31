@@ -1,0 +1,481 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local X = Material.Load({
+	Title = "HaC launcher",
+	Style = 1,
+	SizeX = 380,
+	SizeY = 240,
+	Theme = "Dark",
+	ColorOverrides = {
+		MainFrame = Color3.fromRGB(30,30,30)
+	}
+})
+
+local Y = X.New({
+	Title = "Basic Games"
+})
+
+local Z = X.New({
+    Title = "Swag Games"
+})
+
+local P = X.New({
+    Title = "Simulators"
+})
+
+local L = X.New({
+    Title = "Info"
+})
+
+local A = Y.Button({
+	Text = "Prison life",
+	Callback = function()
+		print("TEST")
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Script hub"
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Tower Of Hell",
+	Callback = function()
+		print("TEST")
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Script hub"
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Build A Boat For Treasure (+)",
+	Callback = function()
+		local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local X = Material.Load({
+	Title = "Build A Boat For Treasure (HaCproject)",
+	Style = 3,
+	SizeX = 420,
+	SizeY = 280,
+	Theme = "Dark",
+	ColorOverrides = {
+		MainFrame = Color3.fromRGB(30,30,30)
+	}
+})
+
+local Y = X.New({
+	Title = "Player"
+})
+
+local Z = X.New({
+	Title = "Auto Farm"
+})
+
+local P = X.New({
+	Title = "Visuals"
+})
+
+local V = X.New({
+	Title = "Others"
+})
+
+
+local C = Y.Slider({
+	Text = "WalkSpeed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+	end,
+	Min = 35,
+	Max = 350,
+	Def = 60
+})
+
+local C = Y.Slider({
+	Text = "JumpPower",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+	end,
+	Min = 40,
+	Max = 450,
+	Def = 60
+})
+
+local A = Y.Button({
+	Text = "Btools",
+	Callback = function()
+		local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+ 
+ -- Objects
+ 
+local ScreenGui = Instance.new("ScreenGui")
+local TextButton = Instance.new("TextButton")
+local On = Instance.new("StringValue")
+ 
+-- Properties
+ 
+ScreenGui.Parent = player.PlayerGui
+ 
+TextButton.Parent = ScreenGui
+TextButton.BackgroundColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0, 0, 0.455743879, 0)
+TextButton.Size = UDim2.new(0, 186, 0, 35)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Btools (Off)"
+TextButton.TextColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+TextButton.TextScaled = true
+TextButton.TextSize = 14
+TextButton.TextWrapped = true
+ 
+ 
+On.Parent = TextButton
+On.Value = "Off"
+ 
+-- Scripts 
+ 
+TextButton.MouseButton1Up:Connect(function()
+	if On.Value == "Off" then
+		On.Value = "On"
+		TextButton.Text = "Btools (On)"
+	else
+		On.Value = "Off"
+		TextButton.Text = "Btools (Off)"
+	end
+end)
+ 
+mouse.Button1Up:Connect(function()
+	if On.Value == "Off" then
+		print('btools off')
+	else
+		if mouse.Target.Locked == true then
+			mouse.Target:Destroy()
+		else
+			mouse.Target:Destroy()
+		end
+	end
+end)
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "This function can get you banned in up-to-date servers; use at your own risk."
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Inf. Jump",
+	Callback = function()
+		local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+local InfiniteJump = CreateButton("Infinite Jump: Off", StuffFrame)
+InfiniteJump.Position = UDim2.new(0,10,0,130)
+InfiniteJump.Size = UDim2.new(0,150,0,30)
+InfiniteJump.MouseButton1Click:connect(function()
+	local state = InfiniteJump.Text:sub(string.len("Infinite Jump: ") + 1) --too lazy to count lol
+	local new = state == "Off" and "On" or state == "On" and "Off"
+	InfiniteJumpEnabled = new == "On"
+	InfiniteJump.Text = "Infinite Jump: " .. new
+end)
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Infinite Jump"
+			})
+		end
+	}
+})
+
+
+local B = Z.Toggle({
+	Text = "Auto Farm",
+	Callback = function(Value)
+		local TweenService = game:GetService('TweenService')
+ 
+ 
+spawn(function()
+    local debounce = false
+    game:GetService('RunService').RenderStepped:Connect(function()
+        if debounce == true then
+            return
+        end
+        debounce = true
+ 
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character
+ 
+        char.HumanoidRootPart.CFrame = CFrame.new(-55.7047195, -9.92602158, -274.044922, -0.999055862, 2.2645871e-08, 0.0434471555, 2.07044444e-08, 1, -4.51347049e-08, -0.0434471555, -4.41925856e-08, -0.999055862) + Vector3.new(0, 50, 0)
+        wait(1)
+        TweenService:Create(char.HumanoidRootPart, TweenInfo.new(30), {CFrame = CFrame.new(-62.3435783, 37.1261864, 9309.92871, 0.966365039, -8.40041281e-09, 0.257176876, 2.07044444e-08, 1, -4.51347049e-08, -0.257176876, 4.89412777e-08, 0.966365039)}):Play()
+        wait(29)
+        TweenService:Create(char.HumanoidRootPart, TweenInfo.new(2), {CFrame = CFrame.new(-56.427002, -360.430267, 9483.74902, -0.999547422, 4.76316799e-08, 0.0300814454, 4.78301097e-08, 1, 5.87685989e-09, -0.0300814454, 7.31299954e-09, -0.999547422)}):Play()
+        wait(20)
+        debounce = false
+    end)
+end)
+ 
+game:GetService('RunService').RenderStepped:Connect(function()
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end)
+	end,
+	Enabled = false
+})
+
+local A = P.Button({
+	Text = "Esp",
+	Callback = function()
+		-- Made by Blissful#4992
+local Player = game:GetService("Players").LocalPlayer
+local Camera = game:GetService("Workspace").CurrentCamera
+local Mouse = Player:GetMouse()
+ 
+local function Dist(pointA, pointB) -- magnitude errors for some reason : (
+return math.sqrt(math.pow(pointA.X - pointB.X, 2) + math.pow(pointA.Y - pointB.Y, 2))
+end
+ 
+local function GetClosest(points, dest)
+local min = math.huge
+local closest = nil
+for _,v in pairs(points) do
+local dist = Dist(v, dest)
+if dist < min then
+min = dist
+closest = v
+end
+end
+return closest
+end
+ 
+local function DrawESP(plr)
+local Box = Drawing.new("Quad")
+Box.Visible = false
+Box.PointA = Vector2.new(0, 0)
+Box.PointB = Vector2.new(0, 0)
+Box.PointC = Vector2.new(0, 0)
+Box.PointD = Vector2.new(0, 0)
+Box.Color = Color3.fromRGB(255, 255, 255)
+Box.Thickness = 2
+Box.Transparency = 1
+ 
+local function Update()
+local c
+c = game:GetService("RunService").RenderStepped:Connect(function()
+if plr.Character ~= nil and plr.Character:FindFirstChildOfClass("Humanoid") ~= nil and plr.Character:FindFirstChild("HumanoidRootPart") ~= nil and plr.Character:FindFirstChildOfClass("Humanoid").Health > 0 and plr.Character:FindFirstChild("Head") ~= nil then
+local pos, vis = Camera:WorldToViewportPoint(plr.Character.HumanoidRootPart.Position)
+if vis then
+local points = {}
+local c = 0
+for _,v in pairs(plr.Character:GetChildren()) do
+if v:IsA("BasePart") then
+c = c + 1
+local p = Camera:WorldToViewportPoint(v.Position)
+if v.Name == "HumanoidRootPart" then
+p = Camera:WorldToViewportPoint((v.CFrame * CFrame.new(0, 0, -v.Size.Z)).p)
+elseif v.Name == "Head" then
+p = Camera:WorldToViewportPoint((v.CFrame * CFrame.new(0, v.Size.Y/2, v.Size.Z/1.25)).p)
+elseif string.match(v.Name, "Left") then
+p = Camera:WorldToViewportPoint((v.CFrame * CFrame.new(-v.Size.X/2, 0, 0)).p)
+elseif string.match(v.Name, "Right") then
+p = Camera:WorldToViewportPoint((v.CFrame * CFrame.new(v.Size.X/2, 0, 0)).p)
+end
+points[c] = p
+end
+end
+local Left = GetClosest(points, Vector2.new(0, pos.Y))
+local Right = GetClosest(points, Vector2.new(Camera.ViewportSize.X, pos.Y))
+local Top = GetClosest(points, Vector2.new(pos.X, 0))
+local Bottom = GetClosest(points, Vector2.new(pos.X, Camera.ViewportSize.Y))
+ 
+if Left ~= nil and Right ~= nil and Top ~= nil and Bottom ~= nil then
+Box.PointA = Vector2.new(Right.X, Top.Y)
+Box.PointB = Vector2.new(Left.X, Top.Y)
+Box.PointC = Vector2.new(Left.X, Bottom.Y)
+Box.PointD = Vector2.new(Right.X, Bottom.Y)
+ 
+Box.Visible = true
+else
+Box.Visible = false
+end
+else
+Box.Visible = false
+end
+else
+Box.Visible = false
+if game.Players:FindFirstChild(plr.Name) == nil then
+c:Disconnect()
+end
+end
+end)
+end
+coroutine.wrap(Update)()
+end
+ 
+for _,v in pairs(game:GetService("Players"):GetChildren()) do
+if v.Name ~= Player.Name then
+DrawESP(v)
+end
+end
+ 
+game:GetService("Players").PlayerAdded:Connect(function(v)
+DrawESP(v)
+end)
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = ":)"
+			})
+		end
+	}
+})
+
+local A = P.Button({
+	Text = "Discord link : https://discord.gg/8MPWqKYP ",
+	Callback = function()
+		print("hello")
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "I LOVE POTATO"
+			})
+		end
+	}
+})
+
+
+local A = Z.Button({
+	Text = "Infinite blocks",
+	Callback = function()
+		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.BuildGui.InventoryFrame.ScrollingFrame.BlocksFrame:GetChildren()) do
+			if v:FindFirstChild("AmountText") then
+				v.AmountText.Text = 999
+				v.AmountText.Changed:Connect(function()
+					v.AmountText.Text = 999
+				end)
+			end
+		end
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "give you 999 blocks"
+			})
+		end
+	}
+})
+
+local A = Z.Button({
+	Text = "By hacSYHU",
+	Callback = function()
+		print("hello")
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "I LOVE POTATO"
+			})
+		end
+	}
+})
+
+local A = Z.Button({
+	Text = "Click teleport",
+	Callback = function()
+		mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = ":)"
+			})
+		end
+	}
+})
+
+local A = V.Button({
+	Text = "Rejoin game",
+	Callback = function()
+		local ts = game:GetService("TeleportService")
+
+local p = game:GetService("Players").LocalPlayer
+
+ 
+
+ts:Teleport(game.PlaceId, p)
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = ":)"
+			})
+		end
+	}
+})
+
+local A = V.Button({
+	Text = "Rejoin game",
+	Callback = function()
+		local ts = game:GetService("TeleportService")
+
+local p = game:GetService("Players").LocalPlayer
+
+ 
+
+ts:Teleport(game.PlaceId, p)
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = ":)"
+			})
+		end
+	}
+})
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Script hub"
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Murder Mystery 2",
+	Callback = function()
+		print("TEST")
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Script hub"
+			})
+		end
+	}
+})
