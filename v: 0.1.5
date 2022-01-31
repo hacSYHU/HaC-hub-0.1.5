@@ -201,10 +201,9 @@ end)
 	}
 })
 
-
-local B = Z.Toggle({
-	Text = "Auto Farm",
-	Callback = function(Value)
+local A = Z.Button({
+	Text = "Auto Farm ",
+	Callback = function()
 		local TweenService = game:GetService('TweenService')
  
  
@@ -233,7 +232,13 @@ game:GetService('RunService').RenderStepped:Connect(function()
     game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
 end)
 	end,
-	Enabled = false
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = ":(((("
+			})
+		end
+	}
 })
 
 local A = P.Button({
@@ -437,25 +442,7 @@ ts:Teleport(game.PlaceId, p)
 	}
 })
 
-local A = V.Button({
-	Text = "Rejoin game",
-	Callback = function()
-		local ts = game:GetService("TeleportService")
 
-local p = game:GetService("Players").LocalPlayer
-
- 
-
-ts:Teleport(game.PlaceId, p)
-	end,
-	Menu = {
-		Information = function(self)
-			X.Banner({
-				Text = ":)"
-			})
-		end
-	}
-})
 	end,
 	Menu = {
 		Information = function(self)
